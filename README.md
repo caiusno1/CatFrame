@@ -1,5 +1,5 @@
 # CatFrame
-![alt text](https://github.com/caiusno1/CatFrame/raw/master/logo.png "Logo CatFrame")  
+![alt text](https://raw.githubusercontent.com/caiusno1/CatFrame/main/logo.png "Logo CatFrame")  
 CatFrame is a framework to implement categorical concepts in TypeScript. It is highly inspired by the lecture material of [FMDE](https://github.com/anthonyanjorin/fmde). 
 (I have the permission to use their ideas under MIT License. Thank you so much!).  
   
