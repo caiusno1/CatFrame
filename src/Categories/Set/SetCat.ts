@@ -34,7 +34,7 @@ export class SetCat<obj> implements Cat<CatSet<obj>>{
         return new TotalFunction(g.trg,f.trg,hmap);
     }
     // id: (obj: CatSet<obj>) => Arrow<CatSet<obj>>;
-    id = (objSet:CatSet<obj>) => new TotalFunction(objSet,objSet,new StructureMap<obj>(Array.from(objSet.values()).map((a,b,c) => [a,a])))
+    id = (objSet:CatSet<obj>) => new TotalFunction(objSet,objSet,new StructureMap<obj>(Array.from(objSet.values()).map((a,b,c) => [a,a]) as [obj,obj][]))
     then(f: TotalFunctionRepresentation<obj>,g: TotalFunctionRepresentation<obj>){
         return f.then(g);
     }

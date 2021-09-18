@@ -38,8 +38,8 @@ export class GraphCat<ObjectType,EdgeType> implements Cat<Graph<ObjectType,EdgeT
         return new GraphMorphism(g.trg,f.trg,hnodemap,hedgemap);
     }
     id(obj: Graph<ObjectType, EdgeType>){
-        const nodeMap = new StructureMap(obj.nodeSet.map((element) => [element,element]))
-        const edgeMap = new StructureMap(obj.edgeSet.map((element) => [element,element]))
+        const nodeMap = new StructureMap(obj.nodeSet.map((element) => [element,element]) as [ObjectType,ObjectType][])
+        const edgeMap = new StructureMap(obj.edgeSet.map((element) => [element,element]) as [EdgeType,EdgeType][])
         return new GraphMorphism(obj,obj,nodeMap,edgeMap);
     }
 
@@ -56,11 +56,11 @@ export class GraphCat<ObjectType,EdgeType> implements Cat<Graph<ObjectType,EdgeT
         const HnodeCoproduct = this.nodeCat.coproduct(F.nodeSet,G.nodeSet)
         const HedgeCoproduct = this.edgeCat.coproduct(F.edgeSet,G.edgeSet)
 
-        const nodeMapF = new StructureMap(F.nodeSet.map(node => [node,node]))
-        const edgeMapF = new StructureMap(F.edgeSet.map(edge => [edge,edge]))
+        const nodeMapF = new StructureMap(F.nodeSet.map(node => [node,node]) as [ObjectType,ObjectType][])
+        const edgeMapF = new StructureMap(F.edgeSet.map(edge => [edge,edge]) as [EdgeType,EdgeType][])
 
-        const nodeMapG = new StructureMap(G.nodeSet.map(node => [node,node]))
-        const edgeMapG = new StructureMap(G.edgeSet.map(edge => [edge,edge]))
+        const nodeMapG = new StructureMap(G.nodeSet.map(node => [node,node]) as [ObjectType,ObjectType][])
+        const edgeMapG = new StructureMap(G.edgeSet.map(edge => [edge,edge]) as [EdgeType,EdgeType][])
 
         const H = new Graph<ObjectType,EdgeType>()
         H.nodeSet = HnodeCoproduct[0].trg;

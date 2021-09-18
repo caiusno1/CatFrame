@@ -91,7 +91,7 @@ export class StructureMap<obj> implements Map<obj,obj>{
     }
     constructor(a:[obj,obj][], mode:"structureMap"|"productionMap" = "structureMap"){
         if(mode === "structureMap"){
-            this.interanlMap = new Map<string,obj>(a.map(o => [this.serializeStructure(o[0]),o[1]]))
+            this.interanlMap = new Map<string,obj>(a.map(o => [this.serializeStructure(o[0]),o[1]]) as [string, obj][])
             this.mode = 0;
         }
         else {
