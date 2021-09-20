@@ -1,33 +1,21 @@
 {
-  "_from": "git+https://github.com/caiusno1/CatFrame.git",
-  "_id": "catframe@1.0.0",
-  "_inBundle": false,
-  "_integrity": "",
-  "_location": "/catframe",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "git",
-    "raw": "catframe@git+https://github.com/caiusno1/CatFrame.git",
-    "name": "catframe",
-    "escapedName": "catframe",
-    "rawSpec": "git+https://github.com/caiusno1/CatFrame.git",
-    "saveSpec": "git+https://github.com/caiusno1/CatFrame.git",
-    "fetchSpec": "https://github.com/caiusno1/CatFrame.git",
-    "gitCommittish": null
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "git+https://github.com/caiusno1/CatFrame.git#6d150c8c8ff55ea1943f72e9e0041c9498e15879",
-  "_spec": "catframe@git+https://github.com/caiusno1/CatFrame.git",
-  "_where": "D:\\dev\\CatFrame\\CatFrameProMatch",
-  "author": {
-    "name": "Kai Biermeier"
-  },
-  "bundleDependencies": false,
-  "dependencies": {},
-  "deprecated": false,
+  "name": "catframe",
+  "version": "1.0.0",
   "description": "A categorical framework for (typescript) model transformation",
+  "scripts": {
+    "test": "jest",
+    "typedoc": "typedoc --out ./typedocs --exclude **/node_modules/** --mode modules --excludeExternals --excludeNotExported --excludePrivate --excludeProtected ./src"
+  },
+  "keywords": [
+    "Computational Category Theory",
+    "Applied Mathematics",
+    "Algebra",
+    "Model Transformation",
+    "Formalization",
+    "Low Code"
+  ],
+  "author": "Kai Biermeier",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "jest": "^26.5.2",
@@ -39,24 +27,10 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
-  "keywords": [
-    "Computational Category Theory",
-    "Applied Mathematics",
-    "Algebra",
-    "Model Transformation",
-    "Formalization",
-    "Low Code"
-  ],
-  "license": "MIT",
+  "dependencies": {},
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "name": "catframe",
   "files": [
     "/dist"
-  ],
-  "scripts": {
-    "test": "jest",
-    "typedoc": "typedoc --out ./typedocs --exclude **/node_modules/** --mode modules --excludeExternals --excludeNotExported --excludePrivate --excludeProtected ./src"
-  },
-  "version": "1.0.0"
+  ]
 }
