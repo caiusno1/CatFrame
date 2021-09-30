@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GraphMorphism = void 0;
 const StructureMap_1 = require("./../../Helpers/StructureMap");
 const TotalFunction_1 = require("../Set/TotalFunction");
 const Graph_1 = require("./Graph");

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CatBuilder = void 0;
 class CatBuilder {
     constructor(objcomparer) {
         this.comparer = objcomparer;

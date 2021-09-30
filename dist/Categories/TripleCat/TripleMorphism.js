@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TripleMorphism = void 0;
 class TripleMorphism {
     constructor(src, trg, leftMap, rightMap, middleMap) {
         this.leftMorphArrow = leftMap;

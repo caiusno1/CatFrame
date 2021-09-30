@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TripleCat = void 0;
 const TripleMorphism_1 = require("./TripleMorphism");
 const CatTriple_1 = require("./CatTriple");
 // TODO test

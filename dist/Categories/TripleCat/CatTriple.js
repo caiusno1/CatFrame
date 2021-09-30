@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CatTriple = void 0;
 class CatTriple {
     constructor(left, right) {
         this.catMorphLeft = left;

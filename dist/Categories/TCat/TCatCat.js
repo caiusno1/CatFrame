@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TCatCat = void 0;
 const TCatMorphism_1 = require("./TCatMorphism");
 const TCat_1 = require("./TCat");
 class TCatCat {

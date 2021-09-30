@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.StructureMap = void 0;
 /*
 Can currently only handle flat objects and numbers
 */

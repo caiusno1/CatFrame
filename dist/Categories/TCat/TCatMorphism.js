@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TCatMorphism = void 0;
 class TCatMorphism {
     constructor(srcObj, trgObj, objectMap, typeMap) {
         this.src = srcObj;

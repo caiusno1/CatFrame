@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GraphRepresentation = void 0;
 const CatSet_1 = require("../Set/CatSet");
 const SetCat_1 = require("../Set/SetCat");
 const Graph_1 = require("./Graph");

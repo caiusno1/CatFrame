@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.TotalFunction = void 0;
 const StructureMap_1 = require("./../../Helpers/StructureMap");
 const CatSet_1 = require("./CatSet");
 class TotalFunction {

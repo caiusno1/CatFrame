@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GraphArrowRepresentation = void 0;
 class GraphArrowRepresentation {
     constructor(f) {
         this.graphmorphism = f;

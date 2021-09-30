@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CatSet = void 0;
 class CatSet extends Array {
     constructor(objcomparer, ...elements) {
         if (elements.length > 1 || elements.length < 1) {

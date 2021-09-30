@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.GraphCat = void 0;
 const SetCat_1 = require("./../Set/SetCat");
 const StructureMap_1 = require("./../../Helpers/StructureMap");
 const GraphMorphism_1 = require("./GraphMorphism");
