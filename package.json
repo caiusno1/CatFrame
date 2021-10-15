@@ -1,6 +1,6 @@
 {
   "name": "catframe",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A categorical framework for (typescript) model transformation",
   "scripts": {
     "test": "jest",
