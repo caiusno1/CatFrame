@@ -31,8 +31,8 @@ describe('Cat of Sets unit tests', () => {
     test('coproduct({1,2,3}, {1,2,3}) = {1,1,2,2,3,3}', () => {
         const a = new CatSet<number>(numComparer,1,2,3)
         const b = new CatSet<number>(numComparer,1,2,3)
-        expect(NumSets.coproduct(a,b)[0].trg.equals(new CatSet(numComparer,1,2,3,1,2,3))).toBeTruthy()
-        expect(NumSets.coproduct(a,b)[0].trg.equals(new CatSet(numComparer,1,1,2,2,3,3))).toBeTruthy()
+        expect(NumSets.coproduct(a,b)[0].trg.equals(new CatSet<number>(numComparer,1,2,3,1,2,3))).toBeTruthy()
+        expect(NumSets.coproduct(a,b)[0].trg.equals(new CatSet<number>(numComparer,1,1,2,2,3,3))).toBeTruthy()
         // expect(NumSets.coproduct(a,b)[0].totalFun.equal(NumSets.coproduct(a,b)[1].totalFun)).toBeFalsy()
     })
     test('equalizer({1}->{2}, {1}->{3}]) = {2,3}->{2}}', () => {

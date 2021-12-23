@@ -40,12 +40,12 @@ describe('GraphMorphism unit tests', () => {
         G.trg.set(new LEdge("t"),{a:9})
         F.src.set(new LEdge("t"),{a:7})
         F.trg.set(new LEdge("t"),{a:9})
-        const mappingNode = new StructureMap([]);
+        const mappingNode = new StructureMap<object>([]);
         mappingNode.set({a:7},{a:7})
         mappingNode.set({a:9},{a:9})
-        const mappingEdge= new StructureMap([]);
+        const mappingEdge= new StructureMap<LEdge>([]);
         mappingEdge.set(new LEdge("t"),new LEdge("t"))
-        const f = new GraphMorphism(F,G,mappingNode,mappingEdge)
+        const f = new GraphMorphism<object,LEdge>(F,G,mappingNode,mappingEdge)
     })
     test('Graphmorphism composable', () => {
         const G = new Graph<object,LEdge>()
@@ -68,12 +68,12 @@ describe('GraphMorphism unit tests', () => {
         G.trg.set(new LEdge("t"),{a:9})
         F.src.set(new LEdge("t"),{a:7})
         F.trg.set(new LEdge("t"),{a:9})
-        const mappingNode = new StructureMap([]);
+        const mappingNode = new StructureMap<object>([]);
         mappingNode.set({a:7},{a:7})
         mappingNode.set({a:9},{a:9})
-        const mappingEdge= new StructureMap([]);
+        const mappingEdge= new StructureMap<LEdge>([]);
         mappingEdge.set(new LEdge("t"),new LEdge("t"))
-        const f = new GraphMorphism(F,G,mappingNode,mappingEdge)
+        const f = new GraphMorphism<object,LEdge>(F,G,mappingNode,mappingEdge)
 
         const H = new Graph<object,LEdge>()
         H.nodeSet = new CatSet<object>(flatObjCompare)
@@ -84,12 +84,12 @@ describe('GraphMorphism unit tests', () => {
         H.trg = new Map();
         H.src.set(new LEdge("s"),{a:7})
         H.trg.set(new LEdge("s"),{a:7})
-        const mappingNode2 = new StructureMap([]);
+        const mappingNode2 = new StructureMap<object>([]);
         mappingNode2.set({a:7},{a:7})
         mappingNode2.set({a:9},{a:7})
-        const mappingEdge2= new StructureMap([]);
+        const mappingEdge2= new StructureMap<LEdge>([]);
         mappingEdge2.set(new LEdge("t"),new LEdge("s"))
-        const g = new GraphMorphism(G,H,mappingNode2,mappingEdge2)
+        const g = new GraphMorphism<object,LEdge>(G,H,mappingNode2,mappingEdge2)
         const h = f.then(g)
         expect(h.equals(g)).toBeTruthy()
     })

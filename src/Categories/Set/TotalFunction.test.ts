@@ -13,7 +13,7 @@ describe('Totalfunction unit tests', () => {
     const b = 2;
 
     map.set(a, b);
-    const totalFunction = new TotalFunction<number>(new CatSet(numComparer, a), new CatSet(numComparer, b), map);
+    const totalFunction = new TotalFunction<number>(new CatSet<number>(numComparer, a), new CatSet<number>(numComparer, b), map);
     expect(totalFunction.apply(a)).toBe(b);
   });
 
@@ -24,10 +24,10 @@ describe('Totalfunction unit tests', () => {
     const c = 3;
 
     map.set(a, b);
-    const totalFunction = new TotalFunction<number>(new CatSet(numComparer, a), new CatSet(numComparer, b), map);
+    const totalFunction = new TotalFunction<number>(new CatSet<number>(numComparer, a), new CatSet<number>(numComparer, b), map);
     const map2 = new StructureMap<number>([]);
     map2.set(b, c);
-    const totalFunction2 = new TotalFunction<number>(new CatSet(numComparer, b), new CatSet(numComparer, c), map2);
+    const totalFunction2 = new TotalFunction<number>(new CatSet<number>(numComparer, b), new CatSet<number>(numComparer, c), map2);
     expect(totalFunction.then(totalFunction2).apply(a)).toBe(c)
   });
 
@@ -38,10 +38,10 @@ describe('Totalfunction unit tests', () => {
     const c = 3;
 
     map.set(a, b);
-    const totalFunction = new TotalFunction<number>(new CatSet(numComparer, a), new CatSet(numComparer, b), map);
+    const totalFunction = new TotalFunction<number>(new CatSet<number>(numComparer, a), new CatSet<number>(numComparer, b), map);
     const map2 = new StructureMap<number>([]);
     map2.set(c, b);
-    const totalFunction2 = new TotalFunction<number>(new CatSet(numComparer, c), new CatSet(numComparer, b), map2);
+    const totalFunction2 = new TotalFunction<number>(new CatSet<number>(numComparer, c), new CatSet<number>(numComparer, b), map2);
     expect(() => totalFunction.then(totalFunction2)).toThrowError(Error);
   });
 
@@ -50,7 +50,7 @@ describe('Totalfunction unit tests', () => {
     const a = 1;
     const b = 2;
     map.set(a, b);
-    expect(() => new TotalFunction<number>(new CatSet(numComparer, a, b), new CatSet(numComparer, b), map)).toThrow("Function is not total");
+    expect(() => new TotalFunction<number>(new CatSet<number>(numComparer, a, b), new CatSet<number>(numComparer, b), map)).toThrow("Function is not total");
   });
 
   test('totalfunction equals', () => {
@@ -58,10 +58,10 @@ describe('Totalfunction unit tests', () => {
     const a = 1;
     const b = 2;
     map.set(a, b);
-    const totalFunction = new TotalFunction<number>(new CatSet(numComparer, a), new CatSet(numComparer, b), map);
+    const totalFunction = new TotalFunction<number>(new CatSet<number>(numComparer, a), new CatSet<number>(numComparer, b), map);
     const map2 = new StructureMap<number>([]);
     map2.set(a, b);
-    const totalFunction2 = new TotalFunction<number>(new CatSet(numComparer, a), new CatSet(numComparer, b), map2);
+    const totalFunction2 = new TotalFunction<number>(new CatSet<number>(numComparer, a), new CatSet<number>(numComparer, b), map2);
     expect(totalFunction.equals(totalFunction2)).toBeTruthy();
   });
 });

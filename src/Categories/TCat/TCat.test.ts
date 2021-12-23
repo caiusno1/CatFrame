@@ -21,29 +21,29 @@ function flatObjCompare(a:any,b:any){
 
 describe('Typing Category unit tests', () => {
     test('NumTypeSet create', () => {
-        const set1 = new CatSet(numComparer, 1)
-        const set2 = new CatSet(numComparer, 1)
+        const set1 = new CatSet<number>(numComparer, 1)
+        const set2 = new CatSet<number>(numComparer, 1)
         const map = new StructureMap<number>([[1,1]]);
-        const NumTypeSet = new TCat<CatSet<number>,SetCat<number>>(new TotalFunction(set1,set2,map) as Arrow<CatSet<number>>);
+        const NumTypeSet = new TCat<CatSet<number>,Cat<CatSet<number>>>(new TotalFunction(set1,set2,map) as Arrow<CatSet<number>>);
     });
     test('NumTypeSet access obj', () => {
-        const set1 = new CatSet(numComparer, 1)
-        const set2 = new CatSet(numComparer, 2)
+        const set1 = new CatSet<number>(numComparer, 1)
+        const set2 = new CatSet<number>(numComparer, 2)
         const map = new StructureMap<number>([[1,2]]);
-        const NumTypeSet = new TCat<CatSet<number>,SetCat<number>>(new TotalFunction(set1,set2,map) as Arrow<CatSet<number>>);
+        const NumTypeSet = new TCat<CatSet<number>,Cat<CatSet<number>>>(new TotalFunction(set1,set2,map) as Arrow<CatSet<number>>);
         expect(NumTypeSet.getObject()[0]).toBe(1)
         expect(NumTypeSet.getTypeObject()[0]).toBe(2)
     });
     test('NumTypeSet equals', () => {
-        const set1 = new CatSet(numComparer, 1)
-        const set2 = new CatSet(numComparer, 2)
+        const set1 = new CatSet<number>(numComparer, 1)
+        const set2 = new CatSet<number>(numComparer, 2)
         const map = new StructureMap<number>([[1,2]]);
-        const NumTypeSet = new TCat<CatSet<number>,SetCat<number>>(new TotalFunction(set1,set2,map) as Arrow<CatSet<number>>);
+        const NumTypeSet = new TCat<CatSet<number>,Cat<CatSet<number>>>(new TotalFunction(set1,set2,map) as Arrow<CatSet<number>>);
 
-        const set12 = new CatSet(numComparer, 1)
-        const set22 = new CatSet(numComparer, 2)
+        const set12 = new CatSet<number>(numComparer, 1)
+        const set22 = new CatSet<number>(numComparer, 2)
         const map2 = new StructureMap<number>([[1,2]]);
-        const NumTypeSet2 = new TCat<CatSet<number>,SetCat<number>>(new TotalFunction(set12,set22,map2) as Arrow<CatSet<number>>);
+        const NumTypeSet2 = new TCat<CatSet<number>,Cat<CatSet<number>>>(new TotalFunction(set12,set22,map2) as Arrow<CatSet<number>>);
 
         expect(NumTypeSet.equals(NumTypeSet2)).toBeTruthy();
     });
