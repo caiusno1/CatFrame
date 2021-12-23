@@ -5,8 +5,7 @@ export declare class TCatMorphism<tcatobj, tcat extends Cat<tcatobj>> implements
     src: TCat<tcatobj, tcat>;
     trg: TCat<tcatobj, tcat>;
     objectArrow: Arrow<tcatobj>;
-    typeArrow: Arrow<tcatobj>;
-    constructor(srcObj: TCat<tcatobj, tcat>, trgObj: TCat<tcatobj, tcat>, objectMap: Arrow<tcatobj>, typeMap: Arrow<tcatobj>);
+    constructor(srcObj: TCat<tcatobj, tcat>, trgObj: TCat<tcatobj, tcat>, objectMap: Arrow<tcatobj>);
     then(g: Arrow<TCat<tcatobj, tcat>>): Arrow<TCat<tcatobj, tcat>>;
     equals(g: Arrow<TCat<tcatobj, tcat>>): boolean;
 }
