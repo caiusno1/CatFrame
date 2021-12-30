@@ -1,4 +1,5 @@
 # CatFrame
+![example workflow](https://github.com/caiusno1/CatFrame/actions/workflows/main.yml/badge.svg?branch=main)
 ![alt text](https://raw.githubusercontent.com/caiusno1/CatFrame/main/logo.png "Logo CatFrame")  
 CatFrame is a framework to implement categorical concepts in TypeScript. Currently, we only support M-adhesive Categories based on the Category Sets(/Totalfunction).  
 It is highly inspired by the lecture material of [FMDE](https://github.com/anthonyanjorin/fmde). 
