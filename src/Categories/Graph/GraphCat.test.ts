@@ -75,7 +75,7 @@ describe('Graph Category unit tests', () => {
         const graph2 = cat.createObject();
         graph2.createNode({name:"Hello World2"})
         graph2.createNode({name:"Hello Hello World2"})
-        graph2.createEdge({name:"Hello World2"},{name:"Hello Hello World2"},{name:"Call"})
+        graph2.createEdge({name:"Hello World2"},{name:"Hello Hello World2"},{name:"Call2"})
 
         const f = cat.createMorphism()
         f.graphmorphism = new GraphMorphism(emptyGraph.getGraph(),graph.getGraph(),new StructureMap([]),new StructureMap([]))

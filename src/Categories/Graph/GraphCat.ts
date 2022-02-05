@@ -56,11 +56,13 @@ export class GraphCat<ObjectType,EdgeType> implements Cat<Graph<ObjectType,EdgeT
         const HnodeCoproduct = this.nodeCat.coproduct(F.nodeSet,G.nodeSet)
         const HedgeCoproduct = this.edgeCat.coproduct(F.edgeSet,G.edgeSet)
 
-        const nodeMapF = new StructureMap(F.nodeSet.map(node => [node,node]) as [ObjectType,ObjectType][])
-        const edgeMapF = new StructureMap(F.edgeSet.map(edge => [edge,edge]) as [EdgeType,EdgeType][])
+        // dirty fix for switching to right map mode (be consistent "to the rest execution")
+        // can't use id here because than the trg set would be incorrect
+        const nodeMapF = new StructureMap(F.nodeSet.map(node => [node,node], (HnodeCoproduct[0].getMapping() as any).mode) as [ObjectType,ObjectType][])
+        const edgeMapF = new StructureMap(F.edgeSet.map(edge => [edge,edge], (HnodeCoproduct[0].getMapping() as any).mode) as [EdgeType,EdgeType][])
 
-        const nodeMapG = new StructureMap(G.nodeSet.map(node => [node,node]) as [ObjectType,ObjectType][])
-        const edgeMapG = new StructureMap(G.edgeSet.map(edge => [edge,edge]) as [EdgeType,EdgeType][])
+        const nodeMapG = new StructureMap(G.nodeSet.map(node => [node,node], (HnodeCoproduct[0].getMapping() as any).mode) as [ObjectType,ObjectType][])
+        const edgeMapG = new StructureMap(G.edgeSet.map(edge => [edge,edge], (HnodeCoproduct[0].getMapping() as any).mode) as [EdgeType,EdgeType][])
 
         const H = new Graph<ObjectType,EdgeType>()
         H.nodeSet = HnodeCoproduct[0].trg;

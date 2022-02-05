@@ -51,10 +51,12 @@ class GraphCat {
     coproduct(F, G) {
         const HnodeCoproduct = this.nodeCat.coproduct(F.nodeSet, G.nodeSet);
         const HedgeCoproduct = this.edgeCat.coproduct(F.edgeSet, G.edgeSet);
-        const nodeMapF = new StructureMap_1.StructureMap(F.nodeSet.map(node => [node, node]));
-        const edgeMapF = new StructureMap_1.StructureMap(F.edgeSet.map(edge => [edge, edge]));
-        const nodeMapG = new StructureMap_1.StructureMap(G.nodeSet.map(node => [node, node]));
-        const edgeMapG = new StructureMap_1.StructureMap(G.edgeSet.map(edge => [edge, edge]));
+        // dirty fix for switching to right map mode (be consistent "to the rest execution")
+        // can't use id here because than the trg set would be incorrect
+        const nodeMapF = new StructureMap_1.StructureMap(F.nodeSet.map(node => [node, node], HnodeCoproduct[0].getMapping().mode));
+        const edgeMapF = new StructureMap_1.StructureMap(F.edgeSet.map(edge => [edge, edge], HnodeCoproduct[0].getMapping().mode));
+        const nodeMapG = new StructureMap_1.StructureMap(G.nodeSet.map(node => [node, node], HnodeCoproduct[0].getMapping().mode));
+        const edgeMapG = new StructureMap_1.StructureMap(G.edgeSet.map(edge => [edge, edge], HnodeCoproduct[0].getMapping().mode));
         const H = new Graph_1.Graph();
         H.nodeSet = HnodeCoproduct[0].trg;
         H.edgeSet = HedgeCoproduct[0].trg;

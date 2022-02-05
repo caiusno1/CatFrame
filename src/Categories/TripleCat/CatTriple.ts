@@ -25,5 +25,8 @@ export class CatTriple<catobj,tcats extends Cat<catobj>> {
     constructor(left:Arrow<catobj>, right:Arrow<catobj>){
         this.catMorphLeft = left
         this.catMorphRight = right
+        if(!(left.src as any).equals(right.src)){
+            throw new Error("Inconsistent instanciation")
+        }
     }
 }

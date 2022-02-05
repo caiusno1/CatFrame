@@ -1,4 +1,3 @@
-import { SetCat } from './SetCat';
 import { StructureMap } from './../../Helpers/StructureMap';
 import { Arrow } from '../Cat/Arrow';
 import { CatSet } from './CatSet';
@@ -34,7 +33,7 @@ export class TotalFunction<InternalObjectType> implements Arrow<CatSet<InternalO
         ) as ([InternalObjectType, InternalObjectType] | [InternalObjectType, null])[];
 
         const filteredftgtupleMap: [InternalObjectType, InternalObjectType][] = ftgtupleMap.filter(([key, value]) => value) as [InternalObjectType, InternalObjectType][]
-        const map = new StructureMap<InternalObjectType>(filteredftgtupleMap);
+        const map = new StructureMap<InternalObjectType>(filteredftgtupleMap, (this.mapping as any).mode === 0 ? "structureMap": 'productionMap');
         return new TotalFunction<InternalObjectType>(this.src, g.trg, map);
     }
     public apply(a: InternalObjectType): InternalObjectType {

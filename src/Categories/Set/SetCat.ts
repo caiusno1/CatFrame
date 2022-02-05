@@ -6,14 +6,19 @@ import { TotalFunctionRepresentation } from './TotalFunctionRepresentation';
 import { Arrow } from '../Cat/Arrow';
 export class SetCat<obj> implements Cat<CatSet<obj>>{
     private readonly compare: (obj1: obj, obj2: obj) => boolean
-    constructor(objcomp: any){
+    private readonly mode: "structureMap"|"productionMap"
+    constructor(objcomp: any, mode: "structureMap"|"productionMap" = "structureMap"){
         this.compare = objcomp;
+        this.mode = mode
+    }
+    toAbstractCat(){
+        return this as Cat<CatSet<obj>>
     }
     mergeArrow(a: TotalFunction<obj>, b: TotalFunction<obj>): TotalFunction<obj>{
         const src = this.coproduct(a.getSrc(),b.getSrc())[0].trg;
         const trg = this.coproduct(a.getTrg(),b.getTrg())[0].trg;
         const mappings = [...a.getMapping().entries(),...b.getMapping().entries()];
-        return new TotalFunction(src,trg,new StructureMap(mappings))
+        return new TotalFunction(src,trg,new StructureMap(mappings, this.mode))
     }
     // f = g;out
     closeTriangle(f: TotalFunction<obj>,g: TotalFunction<obj>): TotalFunction<obj>{
@@ -30,11 +35,11 @@ export class SetCat<obj> implements Cat<CatSet<obj>>{
             const hsrc = g.apply(gsrc);
             hmapentries.push([hsrc,htrg])
         }
-        const hmap = new StructureMap(hmapentries);
+        const hmap = new StructureMap(hmapentries, this.mode);
         return new TotalFunction(g.trg,f.trg,hmap);
     }
     // id: (obj: CatSet<obj>) => Arrow<CatSet<obj>>;
-    id = (objSet:CatSet<obj>) => new TotalFunction(objSet,objSet,new StructureMap<obj>(Array.from(objSet.values()).map((a,b,c) => [a,a]) as [obj,obj][]))
+    id = (objSet:CatSet<obj>) => new TotalFunction(objSet,objSet,new StructureMap<obj>(Array.from(objSet.values()).map((a,b,c) => [a,a]) as [obj,obj][], this.mode))
     then(f: TotalFunctionRepresentation<obj>,g: TotalFunctionRepresentation<obj>){
         return f.then(g);
     }
@@ -47,8 +52,8 @@ export class SetCat<obj> implements Cat<CatSet<obj>>{
         const set1 = new CatSet<obj>(this.compare,...a)
         const set2 = new CatSet<obj>(this.compare,...b)
         const union = new CatSet<obj>(this.compare)
-        const mapping1 = new StructureMap<obj>([])
-        const mapping2 = new StructureMap<obj>([])
+        const mapping1 = new StructureMap<obj>([], this.mode)
+        const mapping2 = new StructureMap<obj>([], this.mode)
         for(const elem1 of set1){
             mapping1.set(elem1,elem1)
             union.push(elem1)
@@ -60,30 +65,28 @@ export class SetCat<obj> implements Cat<CatSet<obj>>{
         return [new TotalFunction(set1,union,mapping1),new TotalFunction(set2,union,mapping2)];
     }
     coequalizer(f:TotalFunction<obj>,g:TotalFunction<obj>): TotalFunction<obj>{
-        const keys = new Set([...f.src,...g.src])
-        const allvalues = new Set([...f.trg,...f.trg])
-        const values = new Set([])
-        const mappedValues = []
-        const mapping = new StructureMap<obj>([])
-        for(const key of keys){
-            if(f.apply(key) && g.apply(key)){
-                mapping.set(f.apply(key),f.apply(key))
-                mapping.set(g.apply(key),f.apply(key))
-                values.add(f.apply(key))
-                mappedValues.push(f.apply(key));
-                mappedValues.push(g.apply(key));
-                allvalues.delete(f.apply(key))
-                allvalues.delete(g.apply(key))
+        const mapping = new StructureMap<obj>([], this.mode)
+        const targetSet = new CatSet(f.trg.compare)
+        for(const srcObj of f.src){
+            if(f.apply(srcObj) && f.apply(srcObj)){
+                mapping.set(f.apply(srcObj),f.apply(srcObj))
+                mapping.set(g.apply(srcObj),f.apply(srcObj))
+                targetSet.push(f.apply(srcObj))
+            }
+            else if(f.apply(srcObj)){
+                mapping.set(f.apply(srcObj),f.apply(srcObj))
+                targetSet.push(f.apply(srcObj))
+            }
+            else if(g.apply(srcObj)){
+                mapping.set(g.apply(srcObj),g.apply(srcObj))
+                targetSet.push(g.apply(srcObj))
             }
         }
-        for(const value of allvalues){
-                mapping.set(value,value);
-                mappedValues.push(value);
-                values.add(value)
+        const haveNoProjectionFromDefinition = Array.from(f.trg).filter((trgObj) => !Array.from(f.getMapping().values()).includes(trgObj) && ! Array.from(g.getMapping().values()).includes(trgObj))
+        for(const toIdMappable of haveNoProjectionFromDefinition){
+            mapping.set(toIdMappable,toIdMappable)
         }
-        const src = new CatSet(this.compare,...mappedValues)
-        const trg = new CatSet(this.compare,...values)
-        return new TotalFunction(src,trg,mapping)
+        return new TotalFunction(f.trg, targetSet,mapping)
     }
     pushout(f:TotalFunction<obj>,g:TotalFunction<obj>){
         const coproduct = this.coproduct(f.trg,g.trg);

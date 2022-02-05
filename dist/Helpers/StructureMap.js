@@ -72,9 +72,9 @@ class StructureMap {
                 && Array.from(map.interanlMap.entries()).every(([key, value]) => this.serializeStructure(this.interanlMap.get(key)) === this.serializeStructure(value));
         }
         else {
-            return Array.from(this.interanlMap.entries()).every(([key, value]) => map.interanlMap.get(key) === value)
+            return Array.from(this.interanlMap1.entries()).every(([key, value]) => map.interanlMap1.get(key) === value)
                 // tslint:disable-next-line: triple-equals
-                && Array.from(map.interanlMap.entries()).every(([key, value]) => this.interanlMap.get(key) === value);
+                && Array.from(map.interanlMap1.entries()).every(([key, value]) => this.interanlMap1.get(key) === value);
         }
     }
     [Symbol.iterator]() {

@@ -32,7 +32,7 @@ class TotalFunction {
             return [key, g.apply(value)];
         });
         const filteredftgtupleMap = ftgtupleMap.filter(([key, value]) => value);
-        const map = new StructureMap_1.StructureMap(filteredftgtupleMap);
+        const map = new StructureMap_1.StructureMap(filteredftgtupleMap, this.mapping.mode === 0 ? "structureMap" : 'productionMap');
         return new TotalFunction(this.src, g.trg, map);
     }
     apply(a) {

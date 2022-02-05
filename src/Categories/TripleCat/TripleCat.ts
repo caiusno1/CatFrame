@@ -38,8 +38,8 @@ export class TripleCat<catobj,tcats extends Cat<catobj>> implements Cat<CatTripl
         const midcoeq = this.baseCategory.coequalizer(a.middleMorphArrow,b.middleMorphArrow);
         const rightcoeq = this.baseCategory.coequalizer(a.rightMorphArrow,b.rightMorphArrow);
 
-        const trgleft = this.baseCategory.closeTriangle(midcoeq,a.trg.getLeftArrow().then(leftcoeq))
-        const trgright = this.baseCategory.closeTriangle(midcoeq,a.trg.getRightArrow().then(rightcoeq))
+        const trgleft = this.baseCategory.closeTriangle(a.trg.getLeftArrow().then(leftcoeq), midcoeq)
+        const trgright = this.baseCategory.closeTriangle(a.trg.getRightArrow().then(rightcoeq), midcoeq)
         const trg = new CatTriple(trgleft,trgright)
         return new TripleMorphism(a.trg,trg,leftcoeq,rightcoeq,midcoeq)
     }

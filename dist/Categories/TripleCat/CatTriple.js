@@ -5,6 +5,9 @@ class CatTriple {
     constructor(left, right) {
         this.catMorphLeft = left;
         this.catMorphRight = right;
+        if (!left.src.equals(right.src)) {
+            throw new Error("Inconsistent instanciation");
+        }
     }
     getLeftObject() {
         return this.catMorphLeft.trg;
