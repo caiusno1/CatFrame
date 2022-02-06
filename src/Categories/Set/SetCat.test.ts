@@ -57,6 +57,27 @@ describe('Cat of Sets unit tests', () => {
         expect(pushout[0].equals(fprime)).toBeTruthy()
         expect(pushout[1].equals(gprime)).toBeTruthy()
     })
+    test('pushout object', () => {
+        const Kai = {value:"Kai"}
+        const Julia = {value:"Julia"}
+        const Tim = {value:"Tim"}
+        const Noel = {value:"Noel"}
+        const Erik = {value:"Erik"}
+        const source = new CatSet<object>(flatObjCompare, Kai)
+        const trg = new CatSet<object>(flatObjCompare, Kai,Julia)
+        const transformation = new TotalFunction(source,trg,new StructureMap([[Kai,Kai]],"productionMap"))
+        const trgMatch = new CatSet<object>(flatObjCompare, Kai, Tim, Noel, Erik)
+        const match = new TotalFunction(source,trgMatch, new StructureMap([[Kai,Kai]],"productionMap"))
+        const SetCategory = new SetCat<object>(flatObjCompare, "productionMap")
+        const pushout = SetCategory.pushout(transformation,match)
+        const pushoutObjTobe = new CatSet<object>(flatObjCompare,Kai,Julia, Tim, Noel, Erik )
+        const pushoutTobe = [
+            new TotalFunction(trg,pushoutObjTobe, new StructureMap([[Kai,Kai],[Julia,Julia]], "productionMap")),
+            new TotalFunction(trgMatch,pushoutObjTobe, new StructureMap([[Kai,Kai],[Tim,Tim],[Noel,Noel],[Erik,Erik]], "productionMap"))
+        ]
+        expect(pushout[0].equals(pushoutTobe[0])).toBeTruthy()
+        expect(pushout[1].equals(pushoutTobe[1])).toBeTruthy()
+    })
     test('mergeArrow({1}->{2}, {2}->{3}]) = {{1}->{2},{2}->{3}}', () => {
         const a = new CatSet<object>(flatObjCompare,{a:1},{d:5})
         const b = new CatSet<object>(flatObjCompare,{b:2},{d:5})
