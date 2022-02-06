@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TripleCat = exports.TripleMorphism = exports.CatTriple = exports.TCatCat = exports.TCatMorphism = exports.TCat = exports.TypedTripleGraphCat = exports.TypedTripleGraphMorphism = exports.TypedTripleGraph = exports.TripleGraphCat = exports.TripleGraphMorphism = exports.TripleGraph = exports.TGraphCat = exports.TGraphMorphism = exports.TGraph = exports.GraphCat = exports.GraphMorphism = exports.Graph = exports.SetCat = exports.TotalFunction = exports.CatSet = void 0;
+exports.StructureMap = exports.TripleCat = exports.TripleMorphism = exports.CatTriple = exports.TCatCat = exports.TCatMorphism = exports.TCat = exports.TypedTripleGraphCat = exports.TypedTripleGraphMorphism = exports.TypedTripleGraph = exports.TripleGraphCat = exports.TripleGraphMorphism = exports.TripleGraph = exports.TGraphCat = exports.TGraphMorphism = exports.TGraph = exports.GraphCat = exports.GraphMorphism = exports.Graph = exports.SetCat = exports.TotalFunction = exports.CatSet = void 0;
+const StructureMap_1 = require("./Helpers/StructureMap");
+Object.defineProperty(exports, "StructureMap", { enumerable: true, get: function () { return StructureMap_1.StructureMap; } });
 const TripleMorphism_1 = require("./Categories/TripleCat/TripleMorphism");
 Object.defineProperty(exports, "TripleMorphism", { enumerable: true, get: function () { return TripleMorphism_1.TripleMorphism; } });
 const TripleCat_1 = require("./Categories/TripleCat/TripleCat");

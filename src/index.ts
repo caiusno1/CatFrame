@@ -1,3 +1,4 @@
+import { StructureMap } from './Helpers/StructureMap';
 import { TripleMorphism } from './Categories/TripleCat/TripleMorphism';
 import { TripleCat } from './Categories/TripleCat/TripleCat';
 import { CatTriple } from './Categories/TripleCat/CatTriple';
@@ -28,5 +29,6 @@ export {Cat,Arrow,
     TripleGraph,TripleGraphMorphism,TripleGraphCat,
     TypedTripleGraph, TypedTripleGraphMorphism,TypedTripleGraphCat,
     TCat, TCatMorphism,TCatCat,
-    CatTriple, TripleMorphism, TripleCat
+    CatTriple, TripleMorphism, TripleCat,
+    StructureMap
 }

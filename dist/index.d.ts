@@ -1,3 +1,4 @@
+import { StructureMap } from './Helpers/StructureMap';
 import { TripleMorphism } from './Categories/TripleCat/TripleMorphism';
 import { TripleCat } from './Categories/TripleCat/TripleCat';
 import { CatTriple } from './Categories/TripleCat/CatTriple';
@@ -21,4 +22,4 @@ import { GraphMorphism } from './Categories/Graph/GraphMorphism';
 import { Graph } from './Categories/Graph/Graph';
 import { Arrow } from './Categories/Cat/Arrow';
 import { Cat } from './Categories/Cat/Cat';
-export { Cat, Arrow, CatSet, TotalFunction, SetCat, Graph, GraphMorphism, GraphCat, TGraph, TGraphMorphism, TGraphCat, TripleGraph, TripleGraphMorphism, TripleGraphCat, TypedTripleGraph, TypedTripleGraphMorphism, TypedTripleGraphCat, TCat, TCatMorphism, TCatCat, CatTriple, TripleMorphism, TripleCat };
+export { Cat, Arrow, CatSet, TotalFunction, SetCat, Graph, GraphMorphism, GraphCat, TGraph, TGraphMorphism, TGraphCat, TripleGraph, TripleGraphMorphism, TripleGraphCat, TypedTripleGraph, TypedTripleGraphMorphism, TypedTripleGraphCat, TCat, TCatMorphism, TCatCat, CatTriple, TripleMorphism, TripleCat, StructureMap };
