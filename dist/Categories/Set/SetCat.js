@@ -83,6 +83,7 @@ class SetCat {
         const haveNoProjectionFromDefinition = Array.from(f.trg).filter((trgObj) => !Array.from(f.getMapping().values()).includes(trgObj) && !Array.from(g.getMapping().values()).includes(trgObj));
         for (const toIdMappable of haveNoProjectionFromDefinition) {
             mapping.set(toIdMappable, toIdMappable);
+            targetSet.push(toIdMappable);
         }
         return new TotalFunction_1.TotalFunction(f.trg, targetSet, mapping);
     }
