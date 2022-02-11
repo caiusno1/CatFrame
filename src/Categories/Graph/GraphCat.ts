@@ -10,11 +10,11 @@ export class GraphCat<ObjectType,EdgeType> implements Cat<Graph<ObjectType,EdgeT
     private readonly compareEdge: (obj1: EdgeType, obj2: EdgeType) => boolean
     private readonly nodeCat: SetCat<ObjectType>
     private readonly edgeCat: SetCat<EdgeType>
-    constructor(objcomp: any, edgecomp: any){
+    constructor(objcomp: any, edgecomp: any, mode: "structureMap"|"productionMap" = "structureMap"){
         this.compareObj = objcomp;
         this.compareEdge = edgecomp;
-        this.nodeCat = new SetCat<ObjectType>(this.compareObj)
-        this.edgeCat = new SetCat<EdgeType>(this.compareEdge)
+        this.nodeCat = new SetCat<ObjectType>(this.compareObj,mode)
+        this.edgeCat = new SetCat<EdgeType>(this.compareEdge, mode)
     }
     mergeArrow(a: GraphMorphism<ObjectType, EdgeType>, b: GraphMorphism<ObjectType, EdgeType>): GraphMorphism<ObjectType, EdgeType>{
         const nodeArrow = this.nodeCat.mergeArrow(a.nodeArrow,b.nodeArrow)

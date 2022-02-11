@@ -8,7 +8,7 @@ export declare class GraphCat<ObjectType, EdgeType> implements Cat<Graph<ObjectT
     private readonly compareEdge;
     private readonly nodeCat;
     private readonly edgeCat;
-    constructor(objcomp: any, edgecomp: any);
+    constructor(objcomp: any, edgecomp: any, mode?: "structureMap" | "productionMap");
     mergeArrow(a: GraphMorphism<ObjectType, EdgeType>, b: GraphMorphism<ObjectType, EdgeType>): GraphMorphism<ObjectType, EdgeType>;
     closeTriangle(f: GraphMorphism<ObjectType, EdgeType>, g: GraphMorphism<ObjectType, EdgeType>): GraphMorphism<ObjectType, EdgeType>;
     id(obj: Graph<ObjectType, EdgeType>): GraphMorphism<ObjectType, EdgeType>;

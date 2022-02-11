@@ -8,11 +8,11 @@ const Graph_1 = require("./Graph");
 const GraphArrowRepresentation_1 = require("./GraphArrowRepresentation");
 const GraphRepresentation_1 = require("./GraphRepresentation");
 class GraphCat {
-    constructor(objcomp, edgecomp) {
+    constructor(objcomp, edgecomp, mode = "structureMap") {
         this.compareObj = objcomp;
         this.compareEdge = edgecomp;
-        this.nodeCat = new SetCat_1.SetCat(this.compareObj);
-        this.edgeCat = new SetCat_1.SetCat(this.compareEdge);
+        this.nodeCat = new SetCat_1.SetCat(this.compareObj, mode);
+        this.edgeCat = new SetCat_1.SetCat(this.compareEdge, mode);
     }
     mergeArrow(a, b) {
         const nodeArrow = this.nodeCat.mergeArrow(a.nodeArrow, b.nodeArrow);
